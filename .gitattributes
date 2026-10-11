@@ -3,8 +3,8 @@
 *.jpg binary
 *.gif binary
 
-# Left out of the release zip (git archive)
 /.github export-ignore
+/tests export-ignore
 /.wordpress-org export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore

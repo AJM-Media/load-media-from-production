@@ -103,10 +103,39 @@ class Environments {
 		return 'unknown';
 	}
 
-	public static function nginx_snippet() {
-		$local = Settings::local_uploads();
-		$path  = trailingslashit( (string) wp_parse_url( $local['url'], PHP_URL_PATH ) );
+	private static function server_paths() {
+		$local   = Settings::local_uploads();
+		$uploads = trailingslashit( (string) wp_parse_url( $local['url'], PHP_URL_PATH ) );
+		$home    = trailingslashit( (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH ) );
 
-		return 'location ^~ ' . $path . " {\n    try_files \$uri \$uri/ /index.php?\$args;\n}";
+		if ( is_multisite() ) {
+			$site    = trailingslashit( (string) wp_parse_url( site_url( '/' ), PHP_URL_PATH ) );
+			$network = trailingslashit( get_network()->path );
+			if ( 0 === strpos( $uploads, $site ) ) {
+				$uploads = $network . substr( $uploads, strlen( $site ) );
+			}
+			$uploads = preg_replace( '#sites/[0-9]+/$#', '', $uploads );
+			$home    = $network;
+		}
+
+		return array(
+			'uploads' => $uploads,
+			'home'    => $home,
+		);
+	}
+
+	public static function nginx_snippet() {
+		$paths = self::server_paths();
+
+		return 'location ^~ ' . $paths['uploads'] . " {\n    try_files \$uri \$uri/ " . $paths['home'] . "index.php?\$args;\n}";
+	}
+
+	public static function apache_multisite_snippet() {
+		$paths   = self::server_paths();
+		$uploads = 0 === strpos( $paths['uploads'], $paths['home'] ) ? substr( $paths['uploads'], strlen( $paths['home'] ) ) : ltrim( $paths['uploads'], '/' );
+		$uploads = untrailingslashit( $uploads );
+		$root    = trailingslashit( wp_normalize_path( ABSPATH ) );
+
+		return 'RewriteCond ' . $root . '$2 !-f' . "\n" . 'RewriteRule ^([_0-9a-zA-Z-]+/)?(' . $uploads . '/.+)$ index.php [L]';
 	}
 }

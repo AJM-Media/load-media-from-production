@@ -251,7 +251,10 @@ class Admin {
 			) . '</p>';
 		}
 
-		if ( 'apache' === $server ) {
+		if ( 'apache' === $server && is_multisite() ) {
+			echo '<p>' . esc_html__( 'The standard multisite .htaccess rules stop requests for missing uploads before they reach WordPress. Add these lines to the .htaccess file in the WordPress folder, directly above the line containing wp-(content|admin|includes):', 'load-media-from-production' ) . '</p>';
+			echo '<pre><code>' . esc_html( Environments::apache_multisite_snippet() ) . '</code></pre>';
+		} elseif ( 'apache' === $server ) {
 			echo '<p>' . esc_html__( 'Apache passes requests for missing files to WordPress through its standard .htaccess rules, so no server changes should be needed. Run the test to confirm.', 'load-media-from-production' ) . '</p>';
 		} elseif ( 'router' === $server ) {
 			echo '<p>' . sprintf(
@@ -268,6 +271,10 @@ class Admin {
 			echo '<pre><code>' . esc_html( Environments::nginx_snippet() ) . '</code></pre>';
 			$where = isset( $preset['where'] ) ? $preset['where'] : __( 'Add it inside the server { } block for this site, then reload nginx.', 'load-media-from-production' );
 			echo '<p>' . esc_html( $where ) . '</p>';
+			if ( 'unknown' === $server && is_multisite() ) {
+				echo '<p>' . esc_html__( 'If it fails and your site runs on Apache, add these lines to the .htaccess file in the WordPress folder instead, directly above the line containing wp-(content|admin|includes):', 'load-media-from-production' ) . '</p>';
+				echo '<pre><code>' . esc_html( Environments::apache_multisite_snippet() ) . '</code></pre>';
+			}
 		}
 
 		echo '<p class="description">' . esc_html__( 'URL rewriting doesn\'t depend on any of this. It only affects redirecting missing files.', 'load-media-from-production' ) . '</p>';

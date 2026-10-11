@@ -71,7 +71,7 @@ No. It's for local and staging copies. If it's left active on a site where `WP_E
 
 = Do I need to change my server settings? =
 
-Usually not. Rewriting media URLs works everywhere. Redirecting missing files needs the web server to pass requests for missing files to WordPress, which Apache does by default. Some nginx setups answer those requests themselves; the settings page shows the block to add and a test to confirm it.
+Usually not. Rewriting media URLs works everywhere. Redirecting missing files needs the web server to pass requests for missing files to WordPress, which Apache does by default on single sites. Some nginx setups and Apache multisite installs answer those requests themselves; the settings page shows the lines to add and a test to confirm it.
 
 = Images I upload on my local site aren't showing on my live site =
 
