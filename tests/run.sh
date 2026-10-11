@@ -80,7 +80,7 @@ docker exec "$PHPC" sh -c 'curl -sSLo /usr/local/bin/wp https://raw.githubuserco
 x mkdir -p "$WPDIR"
 WP_TARBALL=https://wordpress.org/wordpress-$WP_VERSION.tar.gz
 [ "$WP_VERSION" = latest ] && WP_TARBALL=https://wordpress.org/latest.tar.gz
-x sh -c "curl -sSfL $WP_TARBALL | tar -xz --strip-components=1 -C $WPDIR" || die "core download"
+x sh -c "curl -sSfL --retry 5 --retry-all-errors -o /tmp/wordpress.tar.gz $WP_TARBALL && tar -xzf /tmp/wordpress.tar.gz --strip-components=1 -C $WPDIR" || die "core download"
 echo "WordPress $(wp core version)"
 wp config create --dbname=wp --dbuser=root --dbpass=root --dbhost=db --skip-check --quiet || die "config"
 wp config set WP_DEBUG true --raw --quiet
