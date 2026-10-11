@@ -19,7 +19,7 @@ class Environments {
 			'devkinsta' => array(
 				'label'  => 'DevKinsta',
 				'server' => 'nginx',
-				'where'  => __( 'Add the block to your site\'s nginx config file in the DevKinsta folder in your user directory, then restart the site in DevKinsta.', 'load-media-from-production' ),
+				'where'  => __( 'In DevKinsta, open the site and use its Nginx Editor to add the block inside the server { } block. Save, then restart the site in DevKinsta.', 'load-media-from-production' ),
 			),
 			'ddev'      => array(
 				'label'  => 'DDEV',
