@@ -1,0 +1,17 @@
+# Local notes and logs
+*.local.md
+
+# Dependencies and build output
+/vendor/
+/node_modules/
+/build/
+*.zip
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Keyword research exports
+/research/

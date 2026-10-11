@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	html, body { margin: 0; }
+	body {
+		position: relative;
+		width: 772px;
+		height: 250px;
+		overflow: hidden;
+		font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+		background: linear-gradient(120deg, #16325c 0%, #2271b1 100%);
+		color: #ffffff;
+	}
+	.copy { position: absolute; left: 36px; top: 46px; width: 350px; }
+	.title { font-size: 31px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+	.tagline { margin-top: 14px; font-size: 16px; line-height: 1.45; color: #d6e4f5; }
+	svg { position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<div class="copy">
+	<div class="title">Load Media from Production</div>
+	<div class="tagline">Missing images on your local or staging site? Load them straight from your live site.</div>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 772 250" width="772" height="250">
+	<!-- Live site window -->
+	<rect x="420" y="48" width="140" height="124" rx="8" fill="#ffffff"/>
+	<path d="M420 56 a8 8 0 0 1 8 -8 h124 a8 8 0 0 1 8 8 v10 h-140 Z" fill="#dcdcde"/>
+	<circle cx="431" cy="57" r="3" fill="#ff5e5b"/><circle cx="441" cy="57" r="3" fill="#f0b849"/><circle cx="451" cy="57" r="3" fill="#68de7c"/>
+	<rect x="432" y="78" width="56" height="38" rx="4" fill="#f0b849"/>
+	<rect x="496" y="78" width="52" height="38" rx="4" fill="#68de7c"/>
+	<rect x="432" y="124" width="56" height="38" rx="4" fill="#72aee6"/>
+	<rect x="496" y="124" width="52" height="38" rx="4" fill="#ff5e5b"/>
+
+	<!-- Arrow -->
+	<path d="M568 110 H598" stroke="#ff5e5b" stroke-width="5" stroke-linecap="round"/>
+	<path d="M590 101 L600 110 L590 119" fill="none" stroke="#ff5e5b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+	<!-- Local site window -->
+	<rect x="612" y="48" width="140" height="124" rx="8" fill="#ffffff"/>
+	<path d="M612 56 a8 8 0 0 1 8 -8 h124 a8 8 0 0 1 8 8 v10 h-140 Z" fill="#dcdcde"/>
+	<circle cx="623" cy="57" r="3" fill="#ff5e5b"/><circle cx="633" cy="57" r="3" fill="#f0b849"/><circle cx="643" cy="57" r="3" fill="#68de7c"/>
+	<rect x="624" y="78" width="56" height="38" rx="4" fill="#f0b849"/>
+	<rect x="688" y="78" width="52" height="38" rx="4" fill="#68de7c"/>
+	<rect x="624" y="124" width="56" height="38" rx="4" fill="#72aee6"/>
+	<rect x="689.5" y="125.5" width="49" height="35" rx="4" fill="none" stroke="#ff5e5b" stroke-width="3" stroke-dasharray="6 4"/>
+
+	<text x="490" y="198" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Live site</text>
+	<text x="682" y="198" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Local site</text>
+</svg>
+</body>
+</html>
