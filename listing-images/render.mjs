@@ -1,6 +1,3 @@
-// Renders the wp.org icon and banner PNGs from the HTML sources in this folder.
-// Usage: PLAYWRIGHT=/path/to/node_modules/playwright PW_CHANNEL=chromium node .wordpress-org/src/render.mjs
-// PW_CHANNEL is optional (chromium, chrome); use it if the default headless shell won't start.
 import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
@@ -9,7 +6,7 @@ const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT || 'playwright');
 
 const src = path.dirname(fileURLToPath(import.meta.url));
-const out = path.dirname(src);
+const out = path.join(path.dirname(src), '.wordpress-org');
 
 const jobs = [
 	{ html: 'icon.html', file: 'icon-256x256.png', width: 256, height: 256, scale: 1 },
