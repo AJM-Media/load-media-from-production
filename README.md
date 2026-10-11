@@ -27,7 +27,7 @@ The icon and banner are rendered from the HTML in `listing-images/`:
 
     PLAYWRIGHT=/path/to/node_modules/playwright node listing-images/render.mjs
 
-Tests run in GitHub Actions on every push (`tests/run.sh`): WordPress in
+Tests run in GitHub Actions on every branch push (`tests/run.sh`): WordPress in
 Docker with a fake production server, across PHP 7.4-8.3, WordPress 6.0 and
 latest, Apache and nginx, and root, subfolder and multisite installs.
 
