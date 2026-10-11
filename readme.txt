@@ -53,7 +53,11 @@ Source code and issue tracker: [github.com/AJM-Media/load-media-from-production]
 
 = Privacy =
 
-The plugin collects no data and contacts no service other than the production site you enter.
+The plugin collects no data and sends nothing to the plugin author or any third-party service. It only makes these requests:
+
+* Browsers are sent to the production site you enter for media files missing from your copy.
+* In download mode, your site fetches those files from the production site and saves them in your uploads folder. Only file types WordPress allows in uploads are saved.
+* The server test on the settings page requests a file on your own site, only when you click it.
 
 == Installation ==
 
